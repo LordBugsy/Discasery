@@ -1,0 +1,140 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+:root {
+    --signupbackground: rgb(24, 32, 83);
+}
+
+.logo {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    margin: 0 auto;
+    cursor: default;
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    color: white;
+    border: 1px solid transparent;
+    -webkit-text-stroke: 1px transparent;
+    transition: all 0.5s;
+    text-align: center;
+}
+
+.logo:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+}
+
+
+.header {
+    color: white;
+    font-size: 2.5em;
+}
+
+.signupContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50%;
+    opacity: 0;
+    background-color: rgb(24, 32, 83);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 30px;
+    margin: auto;
+    border-radius: 10px;
+    border: 3px solid rgb(52, 64, 145);
+    animation: fadeIn 0.8s ease-in-out both;
+    width: 50%;
+    transition: all 1s;
+}
+
+.signupInput {
+    text-decoration: none;
+    width: 80%;
+    color: rgb(100, 100, 100);
+    text-align: center;
+    border: none;
+    background-color: var(--signupbackground);
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 1px solid transparent;
+    font-weight: bold;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+.signupInput:hover, .signupInput:focus {
+    border-bottom: 1px solid white;
+    width: 80%;
+    outline: none;
+}
+
+.button {
+    margin-bottom: 20px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 7px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: rgb(110, 105, 105);
+}
+
+.active {
+    background-color: rgb(66, 197, 66);
+}
+
+.active:hover {
+    background-color: rgb(25, 173, 25);
+    transform: scale(1.2);
+}
+
+.error {
+    color: red;
+}
+
+.fadeOut {
+    animation: fadeOut 0.8s ease-in-out both;
+    cursor: default;
+}
+
+@media only screen and (max-width: 610px) {
+    .signupContainer {
+        width: 70%;
+    }
+
+    .signupInput {
+        font-size: 1.5em;
+    }
+}
