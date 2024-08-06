@@ -10,8 +10,16 @@ const Trades = () => {
 
     const [tradeTab, setTradeTab] = useState("Search");
     const [searchResult, setSearchResult] = useState("");
+    const [isButtonDisabled, setButtonState] = useState(true);
 
     useEffect(() => setNotification(false), []);
+
+    const searchPlayer = (event) => {
+        const inputValue = event.target.value;
+        setSearchResult(inputValue);
+        if (inputValue.length > 0) setButtonState(false);
+        else setButtonState(true);
+    }
 
     return (
         <>
@@ -22,9 +30,11 @@ const Trades = () => {
 
                     <div className={styles.searchTab}>
                         <div className={styles.searchInput}>
-                            <input type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={() => setSearchResult(event.target.value)} />
-                            <button className={`${styles.button} ${styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
+                            <input type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={() => searchPlayer(event)} />
+                            <button disabled={isButtonDisabled} className={`${styles.responsive} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
                         </div>
+
+                        <button className={`${styles.hidden} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}>Search</button>
 
                         <h1 className={styles.searchResult}>{searchResult}</h1>
                     </div>
