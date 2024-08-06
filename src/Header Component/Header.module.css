@@ -1,0 +1,190 @@
+.header {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(64, 58, 102, 0.24);
+    padding: 0 20px;
+    width: 100%;
+    list-style-type: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    z-index: 999;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+}
+
+.headerLeft, .headerRight {
+    display: flex;
+    align-items: center;
+}
+
+.headerLeft li, .headerRight li {
+    position: relative;
+    margin: 0 10px;
+    text-align: center;
+    color: white;
+}
+
+.navLinks {
+    cursor: pointer;
+}
+
+.logo {
+    cursor: default;
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    color: white;
+    border: 1px solid transparent;
+    -webkit-text-stroke: 1px transparent;
+    user-select: none;
+    transition: all 0.5s;
+}
+
+.logo:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+}
+
+.username {
+    cursor: default;
+    font-weight: bold;
+}
+
+.headerLeft .navLinks::before, .headerRight .navLinks::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    bottom: 0;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.headerLeft .navLinks:hover::before, .headerRight .navLinks:hover::before {
+    background-color: white;
+    height: 2%;
+    width: 100%;
+}
+
+.header .img {
+    width: 30px;
+    height: 30px;
+}
+
+.img {
+    margin-right: 5px;
+}
+
+.credits {
+    display: flex;
+    align-items: center;   
+    gap: 5px;
+    border-radius: 5px;
+    margin: 0 10px;
+    background-color: rgb(57, 50, 100);
+    padding: 0 10px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.whatDoInameThis {
+    display: none;
+}
+
+.headerRight {
+    margin-left: auto;
+}
+
+.bars, .hiddenNavLinks {
+    display: none;
+}
+
+@media only screen and (max-width: 620px) {
+    @keyframes slideRight {
+        from {
+            right: 0
+        }
+
+        to {
+            right: -500px;
+        }
+    }
+
+    @keyframes slideLeft {
+        from {
+            right: -500px;
+        }
+
+        to {
+            right: 0;
+        }
+    }
+
+
+    .responsive {
+        display: none;
+    }
+
+    .bars {
+        display: block;
+        margin-left: auto;
+    }
+
+    .hiddenNavLinks {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        color: white;
+        height: 100%;
+        background-color: rgba(64, 58, 102, 0.808);
+        z-index: 10;
+        margin-top: -20px;
+        right: -500px;
+        width: 60%;
+        padding-right: 20px;
+    }
+
+    .visible {
+        animation: slideRight 0.7s ease-in-out both;
+    }
+
+    .hiddenNameThis {
+        animation: slideLeft 0.7s ease-in-out both;
+    }
+
+    .hidden {
+        list-style: none;
+        font-size: 2em;
+        margin: 20px 10px;
+        font-weight: 700;
+        text-align: right;
+        cursor: pointer;
+    }
+
+    .hr {
+        position: relative;
+        right: 0;
+        margin: auto;
+        color: rgba(255, 255, 255, 0.678);
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .whatDoInameThis {
+        display: flex;
+        position: fixed;
+        background-color: rgba(64, 58, 102, 0.24);;
+        left: -10px;
+        top: 50px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        backdrop-filter: blur(5px);
+    }
+}

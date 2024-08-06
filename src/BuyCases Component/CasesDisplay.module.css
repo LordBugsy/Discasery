@@ -1,0 +1,193 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        bottom: 40px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        bottom: 40px;
+    }
+
+    to {
+        bottom: -100px;
+    }
+}
+
+@keyframes whatShouldINameThis {
+    to {
+        bottom: -100px;
+    }
+}
+
+.caseclicker {
+    margin: 10px 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 0.3s both;
+}
+
+.casesDisplay {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.header {
+    margin-top: 70px;
+    color: white;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(27, 34, 78);
+    padding: 20px;
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: border 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    border: 1px solid white;
+}
+
+.card .img {
+    font-size: 4em;
+    text-align: center;
+    background-color: black;
+    padding: 30px 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.common .img {
+    background-color: rgba(160, 160, 160, 0.247);
+}
+
+.uncommon .img {
+    background-color: rgba(54, 255, 47, 0.267);
+}
+
+.unusual .img {
+    background-color: rgb(35, 98, 158);
+}
+
+.rare .img {
+    background-color: rgb(255, 166, 0);
+}
+
+.epic .img {
+    background-color: blueviolet;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.legendary .img {
+    background-color: rgb(218, 38, 38);
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.mythical .img {
+    background-color: indianred;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.godly .img {
+    background-color: white;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.card .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card .p {
+    font-size: 1em;
+    margin: 0;
+    width: 100%;
+}
+
+.p {
+    text-align: left;
+}
+
+.card .credit {
+    width: 20px;
+    margin: 0 5px;
+}
+
+.card .creditAmount {
+    font-size: 1em;
+    margin: 0;
+}
+
+.notification {
+    opacity: 0;
+    margin-top: 50px;
+    position: fixed;
+    left: 50%;
+    bottom: -100px;
+    cursor: default;
+    transform: translate(-50%, 0);
+    color: white;
+    background-color: rgb(43, 43, 146);
+    padding: 20px 30px;
+    width: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.invisible, .visible {
+    opacity: 1;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.invisible {
+    animation: slideDown 0.7s ease-in-out both;
+}
+
+.visible {
+    animation: slideUp 0.7s ease-in-out both;
+}
+
+.defaultStyle {
+    display: inline;
+}
+
+@media only screen and (max-width: 800px) {
+    .casesDisplay {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .casesDisplay {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .casesDisplay {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

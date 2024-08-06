@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import { DataProvider, DataContext } from './DataProvider';
-import Signup from './Signup';
+import Signup from './Signup Component/Signup';
 import Discasery from './Discasery';
 import './index.css';
-
 
 
 const AppContent = () => {
@@ -16,7 +15,7 @@ const App = () => {
     return (
         <DataProvider>
             <AppContent />
-        </DataProvider>
+        </DataProvider>        
     );
 };
 

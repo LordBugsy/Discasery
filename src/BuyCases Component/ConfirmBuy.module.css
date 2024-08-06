@@ -1,0 +1,132 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 0.3s ease-in-out both;
+}
+
+.fadeOut {
+    animation: fadeOut 0.3s ease-in-out both;
+}
+
+.confirmBuyContainer {
+    position: relative;
+    z-index: 100;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    flex-direction: column;
+    background-color: rgba(43, 40, 65, 0.616);
+}
+
+.header {
+    color: white;
+    font-size: 1.7em;
+}
+
+.case {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.rowStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    gap: 10px;
+    color: white;
+}
+
+.confirmBuy {
+    text-align: center;
+    background-color: rgb(27, 34, 78);
+    padding: 20px 45px;
+    border-radius: 10px;
+    border: 10px solid rgb(14, 9, 56);
+}
+
+.controls {
+    display: grid;
+    margin: auto;
+    width: 70%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+.buy {
+    background-color: rgb(66, 197, 66);
+}
+
+.buy:hover {
+    background-color: rgb(14, 139, 14);
+}
+
+.nope {
+    background-color: rgb(197, 68, 68);
+}
+
+.nope:hover {
+    background-color: red;
+}
+
+.amount {
+    font-size: 1.3em;
+    color: white;
+}
+
+.enoughCredit {
+    color: rgb(66, 197, 66);
+}
+
+.refusedCredit {
+    color: rgb(197, 68, 68);
+}
+
+.absolute {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    bottom: 20%;
+    background-color: rgb(27, 34, 78);
+    border: 10px solid rgb(14, 9, 56);
+    padding: 10px 25px;
+    border-radius: 10px;
+}

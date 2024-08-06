@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { DataContext } from './DataProvider';
-import Inventory from './Inventory';
-import BuyCases from './BuyCase';
-import Trades from './Trades';
-import Header from './Header';
+import Inventory from './Inventory Component/Inventory';
+import BuyCases from './BuyCases Component/BuyCase';
+import Trades from './Trades Component/Trades';
+import Header from './Header Component/Header';
 
 const Caseclicker = () => {
     const { selectedComponent } = useContext(DataContext);
