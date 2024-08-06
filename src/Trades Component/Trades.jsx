@@ -9,7 +9,7 @@ import Loading from '../Loading Component/Loading';
 const Trades = () => {
     const {setNotification} = useContext(DataContext);
 
-    const [tradeTab, setTradeTab] = useState("Search");
+    const [tradeTab, setTradeTab] = useState(true);
     const [searchResult, setSearchResult] = useState("");
     const [isButtonDisabled, setButtonState] = useState(true);
     const [isPlayerBrowsing, setBrowseState] = useState(false);
@@ -39,7 +39,12 @@ const Trades = () => {
         <>
             <div className={styles.caseclicker}>
                 <h1 className={styles.header}>Trades</h1>
-                
+    
+                <div className={styles.tabs}>
+                    <h1 className={styles.tab}>Search for trade</h1>
+                    <h1 className={styles.tab}>Trade requests</h1>
+                </div>
+
                 <div className={styles.trades}>
                     
                     <div className={styles.searchTab}>
