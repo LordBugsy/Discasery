@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './Trades.module.css';
 import credits from '../assets/credits.png';
 import { DataContext } from '../DataProvider';
+import Loading from '../Loading Component/Loading';
 
 
 
@@ -11,6 +12,8 @@ const Trades = () => {
     const [tradeTab, setTradeTab] = useState("Search");
     const [searchResult, setSearchResult] = useState("");
     const [isButtonDisabled, setButtonState] = useState(true);
+    const [isPlayerBrowsing, setBrowseState] = useState(false);
+    const [userResult, setUserResult] = useState("");
 
     useEffect(() => setNotification(false), []);
 
@@ -21,22 +24,33 @@ const Trades = () => {
         else setButtonState(true);
     }
 
+    const browsePlayers = () => {
+        if (userResult === "") {
+            setBrowseState(true);
+            setTimeout(() => {
+                setUserResult("This feature hasn't been added yet.");
+                setBrowseState(false);
+                document.getElementById("textResult").classList.add(styles.liftUp);
+            }, Math.floor(Math.random() * 800) + 700);
+        }
+    }
+
     return (
         <>
             <div className={styles.caseclicker}>
                 <h1 className={styles.header}>Trades</h1>
                 
                 <div className={styles.trades}>
-
+                    
                     <div className={styles.searchTab}>
                         <div className={styles.searchInput}>
                             <input type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={() => searchPlayer(event)} />
-                            <button disabled={isButtonDisabled} className={`${styles.responsive} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
+                            <button onClick={browsePlayers} disabled={isButtonDisabled} className={`${styles.responsive} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
                         </div>
 
-                        <button className={`${styles.hidden} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}>Search</button>
-
-                        <h1 className={styles.searchResult}>{searchResult}</h1>
+                        <button onClick={browsePlayers} className={`${styles.hidden} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}>Search</button>
+                        {isPlayerBrowsing && <Loading />}
+                        <h1 id='textResult' className={styles.searchResult}>{userResult}</h1>
                     </div>
 
                     {/* <div className={styles.tradeCard}>

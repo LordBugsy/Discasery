@@ -8,6 +8,17 @@
     }
 }
 
+@keyframes liftUp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(40%);
+    }
+}
+
 :root {
     --inputColour: rgb(3, 20, 51);
 }
@@ -189,6 +200,17 @@
     display: none;
 }
 
+.searchResult {
+    margin-top: 40px;
+    opacity: 0;
+    color: red;
+    
+}
+
+.liftUp {
+    animation: liftUp 0.3s ease-in-out both;
+}
+
 @media only screen and (max-width: 940px) {
     .trades {
         grid-template-columns: repeat(2, 1fr);
@@ -201,7 +223,7 @@
     }
 }
 
-@media only screen and (max-width: 535px) {
+@media only screen and (max-width: 570px) {
     .responsive {
         display: none;
     }
