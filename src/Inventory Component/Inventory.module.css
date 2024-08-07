@@ -30,14 +30,12 @@
 }
 
 .header {
-    animation: fadeIn 0.5s ease-in-out 0.3s both;
-}
-
-.header {
     margin-top: 70px;
     color: white;
     text-align: center;
     text-shadow: 0 3px 1px gray;
+    animation: fadeIn 0.5s ease-in-out 0.3s both;
+    user-select: none;
 }
 
 .containerHeader {

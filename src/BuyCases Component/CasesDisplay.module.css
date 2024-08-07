@@ -46,6 +46,7 @@
     color: white;
     text-align: center;
     text-shadow: 0 3px 1px gray;
+    user-select: none;
 }
 
 .card {

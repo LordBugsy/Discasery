@@ -8,6 +8,16 @@
     }
 }
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes liftUp {
     from {
         opacity: 0;
@@ -19,8 +29,27 @@
     }
 }
 
+@keyframes tabSelector {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+} 
+
+
 :root {
     --inputColour: rgb(3, 20, 51);
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out 0.3s both;
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s ease-in-out both;
 }
 
 .caseclicker {
@@ -36,6 +65,7 @@
     color: white;
     text-align: center;
     text-shadow: 0 3px 1px gray;
+    user-select: none;
 }
 
 .button {
@@ -48,16 +78,11 @@
     transition: all 0.3s;
 }
 
-/* .trades {
+.trades {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-} */
-
-.trades {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 70px;
 }
 
 .newTrade {
@@ -130,6 +155,13 @@
 
 .tradeCard:hover {
     border: 2px solid white;
+}
+
+/* TRADE SEARCH TAB */
+.tradeSearchTab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .username {
@@ -213,22 +245,55 @@
 }
 
 .tabs {
-    margin-top: -10px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
     color: white;
+    width: 620px;
+    margin: auto;
+    border-radius: 10px;
+    margin-bottom: -40px;
+    position: relative;
 }
 
 .tab {
     cursor: pointer;
     user-select: none;
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    transition: all 0.5s;
+}
+
+.selectedTab {
+    color: rgb(104, 216, 70);
+}
+
+.selectedTab::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(104, 216, 70);
+    height: 5px;
+    width: 100%;
+    bottom: -8px;
+    opacity: 0;
+    animation: tabSelector 0.5s ease-in-out both;
 }
 
 @media only screen and (max-width: 940px) {
     .trades {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 655px) {
+    .tabs {
+        width: 100%;
+    }
+
+    .selectedTab::before {
+        display: none;
     }
 }
 
