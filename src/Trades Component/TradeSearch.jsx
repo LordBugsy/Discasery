@@ -30,7 +30,7 @@ const TradeSearch = () => {
         <div id='tradeSearch' className={`${styles.tradeSearchTab} ${styles.fadeIn}`}>
             <div className={styles.searchTab}>
                 <div className={styles.searchInput}>
-                    <input id='input' type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={searchPlayer} />
+                    <input id='input' type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={searchPlayer} maxLength="12" />
                     <button onClick={browsePlayers} disabled={isButtonDisabled} className={`${styles.responsive} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
                 </div>
 

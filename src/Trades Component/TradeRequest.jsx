@@ -1,7 +1,19 @@
 import styles from './TradeRequest.module.css'
 import credits from '../assets/credits.png';
+import { DataContext } from '../DataProvider';
+import { useContext } from 'react';
 
 const TradeRequest = () => {
+    const {isTradeSelected, setTradeSelectionState} = useContext(DataContext);
+
+    const openTradeDetails = () => {
+        setTradeSelectionState(true);
+    }
+
+    const closeTradeDetails = () => {
+        
+    }
+
     return (
         <div id='tradeRequest' className={`${styles.trades} ${styles.fadeIn}`}>
             <div className={styles.tradeCard}>
@@ -15,7 +27,7 @@ const TradeRequest = () => {
             
                 <div className={styles.traderInfo}>
                     <p><span className={styles.username}>John Doe</span> would like to trade!</p>
-                    <button className={`${styles.button} ${styles.view}`}>See trade</button>
+                    <button onClick={openTradeDetails} className={`${styles.button} ${styles.view}`}>See trade</button>
                 </div>
             </div>
             
@@ -30,7 +42,7 @@ const TradeRequest = () => {
             
                 <div className={styles.traderInfo}>
                 <p><span className={styles.username}>LordBugsy</span> would like to trade!</p>
-                    <button className={`${styles.button} ${styles.view}`}>See trade</button>
+                    <button onClick={openTradeDetails} className={`${styles.button} ${styles.view}`}>See trade</button>
                 </div>
             </div>
             
@@ -45,7 +57,7 @@ const TradeRequest = () => {
             
                 <div className={styles.traderInfo}>
                     <p><span className={styles.username}>Dummy</span> would like to trade!</p>
-                    <button className={`${styles.button} ${styles.view}`}>See trade</button>
+                    <button onClick={openTradeDetails} className={`${styles.button} ${styles.view}`}>See trade</button>
                 </div>
             </div>
         </div>

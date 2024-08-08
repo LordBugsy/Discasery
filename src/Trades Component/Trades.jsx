@@ -7,7 +7,7 @@ import TradeRequest from './TradeRequest';
 import ConfirmTrade from './ConfirmTrade';
 
 const Trades = () => {
-    const {setNotification} = useContext(DataContext);
+    const {setNotification, isTradeSelected} = useContext(DataContext);
     const [searchTab, setTradeTab] = useState(true);
 
     useEffect(() => setNotification(false), []);
@@ -26,7 +26,7 @@ const Trades = () => {
 
             </div>
 
-            <ConfirmTrade />
+            {isTradeSelected && <ConfirmTrade />}
 
             <div className='copyright'>
                 <h2>*STILL IN DEVELOPMENT*</h2>
