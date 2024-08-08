@@ -18,8 +18,19 @@
     }
 }
 
+@keyframes setFullWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
 :root {
     --confirmTradeColour: rgba(0, 0, 0, 0.37);
+    --containerBackgroundColour: rgb(28, 51, 92);
 }
 
 .fadeIn {
@@ -41,11 +52,12 @@
     z-index: 80;
     opacity: 0;
     overflow-y: scroll;
+    user-select: none;
 }
 
 .confirmTrade {
     margin: auto;
-    background-color: rgb(28, 51, 92);
+    background-color: var(--containerBackgroundColour);
     height: 720px;
     width: 40em;
     border-radius: 10px;
@@ -115,8 +127,22 @@
 }
 
 .disabled {
-    background-color: gray;
+    background-color: rgba(66, 66, 66, 0.582);
     cursor: not-allowed;
+    overflow: hidden;
+    position: relative;
+}
+
+.disabled::before {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(128, 128, 128, 0.39);
+    animation: setFullWidth 3.7s ease-in-out both;
+    color: white;
 }
 
 .tradedItems {
@@ -126,6 +152,7 @@
     background-color: rgb(13, 27, 66);
     margin: auto;
     border-radius: 10px;
+    position: relative;
 }
 
 .tradeHeader {
@@ -140,4 +167,36 @@
     width: 80%;
     margin: 20px auto;
     color: rgb(255, 31, 31);
+}
+
+.credit {
+    height: 80%;
+    margin: auto;
+    margin-left: 30px;
+}
+
+.itemIcon {
+    font-size: 8em;
+    color: white;
+    margin: auto;
+    margin-left: 30px;
+}
+
+.itemInformation {
+    position: absolute;
+    bottom: -28px;
+    right: -8px;
+    font-size: 1.5em;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: var(--containerBackgroundColour);
+    color: white;
+}
+
+@media only screen and (max-width: 640px) {
+    .confirmTrade {
+        width: 100%;
+        height: 800px;
+    }
 }

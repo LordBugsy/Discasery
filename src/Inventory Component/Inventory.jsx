@@ -1,10 +1,15 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styles from './Inventory.module.css'
 import credits from '../assets/credits.png'
 import { DataContext } from '../DataProvider'
 
 const Inventory = () => {
-    const {inventory, setNotification, setComponent} = useContext(DataContext);
+    const {inventory, setNotification, setComponent, setTradeSelectionState} = useContext(DataContext);
+
+    useEffect(() => {
+        setNotification(false);
+        setTradeSelectionState(false);
+    }, []);
 
     //background of the image
     const setRarityBackground = (rarity) => {

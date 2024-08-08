@@ -1,8 +1,9 @@
 import styles from './ConfirmTrade.module.css'
+import credits from '../assets/credits.png';
 import { DataContext } from '../DataProvider';
 import { useContext, useEffect, useState } from 'react';
 
-const ConfirmTrade = (props) => {
+const ConfirmTrade = () => {
     const {setTradeSelectionState} = useContext(DataContext);
 
     const [isInteractivityAllowed, setInteractivityState] = useState(false);
@@ -40,13 +41,17 @@ const ConfirmTrade = (props) => {
     }
 
     const setItemImage = (itemType, itemRarity) => {
-        if (itemType !== "credits") {
+        if (itemType === "credits") {
 
         }
 
         else {
             switch(itemType) {
+                case 'case':
+                    return <i className={`fa-solid fa-toolbox ${styles.icon}`}></i>
 
+                default:
+                    return <i className={`ri-arrow-left-right-line ${styles.tradeIcon}`}></i>
             }
         }
     }
@@ -69,19 +74,22 @@ const ConfirmTrade = (props) => {
                     <h1 className={styles.tradeHeader}>You will receive:</h1>
                     <div className={`${styles.tradedItems} ${styles.receive}`}>
                         {/*put the item's image here*/}
+                        <img className={styles.credit} src={credits} alt='coins' />
+                        <p className={styles.itemInformation}>700 Credits</p>
                     </div>
 
                     <h1 className={styles.tradeHeader}>You will lose:</h1>
                     <div className={`${styles.tradedItems} ${styles.lose}`}>
-                        {/*put the item's image here */}
+                        <i className={`fa-solid fa-toolbox ${styles.itemIcon}`}></i>
+                        <p className={styles.itemInformation}>Mythical Case</p>
                     </div>
 
                     <p className={styles.information}>All trades are final and your items cannot be returned after you and the player agreed on this trade.</p>
                 </div>
                 
                 <div className={styles.controls}>
-                    <button onClick={acceptTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.acceptTrade : styles.disabled}`}>Accept</button>
-                    <button onClick={declineTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.declineTrade : styles.disabled}`}>Decline</button>
+                    <button disabled={!isInteractivityAllowed} onClick={acceptTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.acceptTrade : styles.disabled}`}>Accept</button>
+                    <button disabled={!isInteractivityAllowed} onClick={declineTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.declineTrade : styles.disabled}`}>Decline</button>
                 </div>
             </div>
         </div>
