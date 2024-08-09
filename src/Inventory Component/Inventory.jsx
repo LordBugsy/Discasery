@@ -4,7 +4,7 @@ import credits from '../assets/credits.png'
 import { DataContext } from '../DataProvider'
 
 const Inventory = () => {
-    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState} = useContext(DataContext);
+    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount} = useContext(DataContext);
 
     useEffect(() => {
         setNotification(false);
@@ -114,6 +114,13 @@ const Inventory = () => {
         return String(element.split(' ')[0]);
     }
 
+    const sellItem = (element) => {
+        if (element.amount > 0) {
+            element.amount--;
+            setCreditAmount(c => c + element.value);
+        }
+    }
+
     const emptyCaseInventory = inventory.every(element => element.amount === 0);
     const emptyItemInventory = itemInventory.every(element => element.amount === 0);
 
@@ -178,7 +185,7 @@ const Inventory = () => {
                                             <p className={styles.itemValue}>Value: <span className={styles.bold}>{element.value}</span> <img src={credits} className={styles.credit} /></p>
                                             <p className={styles.itemAmount}>Amount: <span className={styles.bold}>x{element.amount}</span></p>
     
-                                            <button className={`${styles.button} ${styles.sell}`}>Sell</button>
+                                            <button onClick={() => sellItem(element)} className={`${styles.button} ${styles.sell}`}>Sell</button>
                                         </div>
                                     </div>
                                 )
