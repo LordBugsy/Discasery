@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
     const [notificationDisplay, setNotification] = useState(false);
     const [isCaseBought, setCaseBoughtInfo] = useState(false);
     const [isTradeSelected, setTradeSelectionState] = useState(false);
+    const [currentTradeObject, setCurrentTradeObject] = useState({});
 
     const [inventory, updateInventory] = useState([
         {name: "Common Case", amount: 0}, 
@@ -22,7 +23,35 @@ export const DataProvider = ({ children }) => {
     ]);
 
     const [itemInventory, updateItemInventory] = useState([
-       {name: "Common Shield", amount: 0, value: '0'} 
+       {name: "Common Fish", type: "fish", rarity: "common", amount: 0, value: 10},
+       {name: "Uncommon Fish", type: "fish", rarity: "uncommon", amount: 0, value: 35},
+
+       {name: "Common Shield", type: "shield", rarity: "common", amount: 0, value: 30},
+       {name: "Uncommon Shield", type: "shield", rarity: "uncommon", amount: 0, value: 70},
+       {name: "Unusual Shield", type: "shield", rarity: "unusual", amount: 0, value: 120},
+
+       {name: "Common Feather", type: "feather", rarity: "common", amount: 0, value: 15},
+       {name: "Uncommon Feather", type: "feather", rarity: "uncommon", amount: 0, value: 35},
+       {name: "Unusual Feather", type: "feather", rarity: "unusual", amount: 0, value: 90},
+       {name: "Rare Feather", type: "feather", rarity: "epic", amount: 0, value: 225}, 
+
+       {name: "Unusual Umbrella", type: "crow", rarity: "legendary", amount: 0, value: 130},
+       {name: "Rare Umbrella", type: "crow", rarity: "mythical", amount: 0, value: 350},
+       {name: "Epic Umbrella", type: "crow", rarity: "godly", amount: 0, value: 975},
+       {name: "Legendary Umbrella", type: "crow", rarity: "godly", amount: 0, value: 1300},
+
+       {name: "Legendary Crow", type: "crow", rarity: "legendary", amount: 0, value: 1950},
+       {name: "Mythical Crow", type: "crow", rarity: "mythical", amount: 0, value: 2550},
+       {name: "Godly Crow", type: "crow", rarity: "godly", amount: 0, value: 4000},
+
+       {name: "Mythical Dove", type: "dove", rarity: "mythical", amount: 0, value: 2200},
+       {name: "Godly Dove", type: "dove", rarity: "godly", amount: 0, value: 4200},
+
+       {name: "Mythical Hippo", type: "hippo", rarity: "mythical", amount: 0, value: 1870},
+       {name: "Godly Hippo", type: "hippo", rarity: "godly", amount: 0, value: 3400},
+
+       {name: "Mythical Dragon", type: "dragon", rarity: "mythical", amount: 0, value: 3570},
+       {name: "Godly Dragon", type: "dragon", rarity: "godly", amount: 0, value: 6535}
     ]);
 
     const [tradeList, updateTradeList] = useState([
@@ -33,7 +62,8 @@ export const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{ selectedComponent, setComponent, username, setUsername, creditAmount, setCreditAmount, notificationDisplay, setNotification, 
-                isCaseBought, setCaseBoughtInfo, inventory, updateInventory, isTradeSelected, setTradeSelectionState, tradeList, updateTradeList }}>
+                isCaseBought, setCaseBoughtInfo, inventory, updateInventory, isTradeSelected, setTradeSelectionState, tradeList, updateTradeList, 
+                currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory }}>
             {children}
         </DataContext.Provider>
     );

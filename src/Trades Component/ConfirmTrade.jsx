@@ -4,7 +4,7 @@ import { DataContext } from '../DataProvider';
 import { useContext, useEffect, useState } from 'react';
 
 const ConfirmTrade = () => {
-    const {setTradeSelectionState} = useContext(DataContext);
+    const {setTradeSelectionState, currentTradeObject} = useContext(DataContext);
 
     const [isInteractivityAllowed, setInteractivityState] = useState(false);
 
@@ -40,19 +40,43 @@ const ConfirmTrade = () => {
         }, 500);
     }
 
-    const setItemImage = (itemType, itemRarity) => {
-        if (itemType === "credits") {
+    const itemImage = itemType => {
+        switch(itemType) {
+            case 'credits':
+                return ( <img className={styles.credit} src={credits} alt='coins' /> );
 
-        }
+            case 'case':
+                return ( <i className={`fa-solid fa-toolbox ${styles.itemIcon}`}></i> );
 
-        else {
-            switch(itemType) {
-                case 'case':
-                    return <i className={`fa-solid fa-toolbox ${styles.icon}`}></i>
 
-                default:
-                    return <i className={`ri-arrow-left-right-line ${styles.tradeIcon}`}></i>
-            }
+            
+            // items
+            case 'fish':
+                return ( <i className={`fa-solid fa-fish ${styles.itemIcon}`}></i> )
+
+            case 'shield':
+                return ( <i className={`fa-solid fa-shield-halved ${styles.itemIcon}`}></i> );
+
+            case 'feather':
+                return ( <i className={`fa-solid fa-feather-pointed ${styles.itemIcon}`}></i> );
+            
+            case 'umbrella':
+                return ( <i className={`fa-solid fa-umbrella ${styles.itemIcon}`}></i> );
+
+            case 'crow':
+                return ( <i className={`fa-solid fa-crow ${styles.itemIcon}`}></i> );
+
+            case 'dove':
+                return ( <i className={`fa-solid fa-dove ${styles.itemIcon}`}></i> );
+
+            case 'hippo':
+                return ( <i className={`fa-solid fa-hippo ${styles.itemIcon}`}></i> );
+
+            case 'dragon':
+                return ( <i className={`fa-solid fa-dragon ${styles.itemIcon}`}></i> );
+
+            default:
+                return ( <i className={`ri-question-mark ${styles.itemIcon}`}></i>) ;
         }
     }
 
@@ -73,15 +97,14 @@ const ConfirmTrade = () => {
                 <div className={styles.tradeInfo}>
                     <h1 className={styles.tradeHeader}>You will receive:</h1>
                     <div className={`${styles.tradedItems} ${styles.receive}`}>
-                        {/*put the item's image here*/}
-                        <img className={styles.credit} src={credits} alt='coins' />
-                        <p className={styles.itemInformation}>700 Credits</p>
+                        {itemImage(currentTradeObject.authorItemType)}
+                        <p className={styles.itemInformation}>{currentTradeObject.authorItemName}</p>
                     </div>
 
                     <h1 className={styles.tradeHeader}>You will lose:</h1>
                     <div className={`${styles.tradedItems} ${styles.lose}`}>
-                        <i className={`fa-solid fa-toolbox ${styles.itemIcon}`}></i>
-                        <p className={styles.itemInformation}>Mythical Case</p>
+                        {itemImage(currentTradeObject.requestedItemType)}
+                        <p className={styles.itemInformation}>{currentTradeObject.requestedItemName}</p>
                     </div>
 
                     <p className={styles.information}>All trades are final and your items cannot be returned after you and the player agreed on this trade.</p>

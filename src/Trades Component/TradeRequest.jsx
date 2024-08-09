@@ -4,14 +4,11 @@ import { DataContext } from '../DataProvider';
 import { useContext } from 'react';
 
 const TradeRequest = () => {
-    const {setTradeSelectionState, tradeList} = useContext(DataContext);
+    const {setTradeSelectionState, tradeList, setCurrentTradeObject} = useContext(DataContext);
 
-    const openTradeDetails = () => {
+    const openTradeDetails = (object) => {
         setTradeSelectionState(true);
-    }
-
-    const closeTradeDetails = () => {
-        
+        setCurrentTradeObject(object);
     }
 
     return (
@@ -30,7 +27,7 @@ const TradeRequest = () => {
 
                             <div className={styles.traderInfo}>
                                 <p><span className={styles.username}>{element.author}</span> would like to trade!</p>
-                                <button onClick={openTradeDetails} className={`${styles.button} ${styles.view}`}>See trade</button>
+                                <button onClick={() => openTradeDetails(element)} className={`${styles.button} ${styles.view}`}>See trade</button>
                             </div>
                         </div>
                     )

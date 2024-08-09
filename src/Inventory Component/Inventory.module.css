@@ -29,6 +29,10 @@
     animation: fadeIn 0.5s ease-in-out 0.3s both;
 }
 
+.noCasesFound {
+    user-select: none;
+}
+
 .header {
     margin-top: 70px;
     color: white;
@@ -64,6 +68,7 @@
 }
 
 .card {
+    user-select: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,6 +241,7 @@
 
 .clickableElement {
     margin-top: -10px;
+    user-select: none;
 }
 
 .interact {
