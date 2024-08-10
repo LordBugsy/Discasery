@@ -10,6 +10,7 @@ export const DataProvider = ({ children }) => {
     const [isCaseBought, setCaseBoughtInfo] = useState(false);
     const [isTradeSelected, setTradeSelectionState] = useState(false);
     const [currentTradeObject, setCurrentTradeObject] = useState({});
+    const [isCaseOpening, setOpenCaseState] = useState(false);
 
     const [inventory, updateInventory] = useState([
         {name: "Common Case", amount: 0}, 
@@ -23,7 +24,7 @@ export const DataProvider = ({ children }) => {
     ]);
 
     const [itemInventory, updateItemInventory] = useState([
-       {name: "Common Fish", type: "fish", rarity: "common", amount: 4, value: 10},
+       {name: "Common Fish", type: "fish", rarity: "common", amount: 0, value: 10},
        {name: "Uncommon Fish", type: "fish", rarity: "uncommon", amount: 0, value: 35},
 
        {name: "Common Shield", type: "shield", rarity: "common", amount: 0, value: 30},
@@ -40,9 +41,9 @@ export const DataProvider = ({ children }) => {
        {name: "Epic Umbrella", type: "crow", rarity: "godly", amount: 0, value: 975},
        {name: "Legendary Umbrella", type: "crow", rarity: "godly", amount: 0, value: 1300},
 
-       {name: "Legendary Crow", type: "crow", rarity: "legendary", amount: 2, value: 1950},
-       {name: "Mythical Crow", type: "crow", rarity: "mythical", amount: 2, value: 2550},
-       {name: "Godly Crow", type: "crow", rarity: "godly", amount: 99, value: 4000},
+       {name: "Legendary Crow", type: "crow", rarity: "legendary", amount: 0, value: 1950},
+       {name: "Mythical Crow", type: "crow", rarity: "mythical", amount: 0, value: 2550},
+       {name: "Godly Crow", type: "crow", rarity: "godly", amount: 0, value: 4000},
 
        {name: "Mythical Dove", type: "dove", rarity: "mythical", amount: 0, value: 2200},
        {name: "Godly Dove", type: "dove", rarity: "godly", amount: 0, value: 4200},
@@ -63,7 +64,7 @@ export const DataProvider = ({ children }) => {
     return (
         <DataContext.Provider value={{ selectedComponent, setComponent, username, setUsername, creditAmount, setCreditAmount, notificationDisplay, setNotification, 
                 isCaseBought, setCaseBoughtInfo, inventory, updateInventory, isTradeSelected, setTradeSelectionState, tradeList, updateTradeList, 
-                currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory }}>
+                currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory, isCaseOpening, setOpenCaseState }}>
             {children}
         </DataContext.Provider>
     );

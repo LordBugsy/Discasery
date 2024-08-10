@@ -1,10 +1,12 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styles from './Inventory.module.css'
 import credits from '../assets/credits.png'
 import { DataContext } from '../DataProvider'
+import OpenCase from './OpenCase'
 
 const Inventory = () => {
-    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount} = useContext(DataContext);
+    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount, isCaseOpening, setOpenCaseState} = useContext(DataContext);
+    const [caseName, setCaseName] = useState("");
 
     useEffect(() => {
         setNotification(false);
@@ -121,6 +123,11 @@ const Inventory = () => {
         }
     }
 
+    const openCase = (element) => {
+        setOpenCaseState(true);
+        setCaseName(element);
+    }
+
     const emptyCaseInventory = inventory.every(element => element.amount === 0);
     const emptyItemInventory = itemInventory.every(element => element.amount === 0);
 
@@ -150,7 +157,7 @@ const Inventory = () => {
                                     <div className={styles.value}>
                                         <h2 className={`${styles.itemName} ${setRarityText(getRarity(element.name))}`}>{element.name}</h2>
                                         <p className={styles.itemAmount}>Amount: <span id='value' className={styles.bold}>x{element.amount}</span></p>
-                                        <button className={`${styles.button} ${styles.open}`}>Open</button>
+                                        <button onClick={() => openCase(element.name)} className={`${styles.button} ${styles.open}`}>Open</button>
                                     </div>
                                 </div>
                             )
@@ -194,6 +201,8 @@ const Inventory = () => {
                 }
                 </div>
             </div>
+
+            {isCaseOpening && <OpenCase name={caseName} />}
 
             <div className='copyright'>
                 <h2>*STILL IN DEVELOPMENT*</h2>
