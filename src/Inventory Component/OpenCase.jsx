@@ -192,7 +192,7 @@ const OpenCase = (props) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            const container = document.getElementById("container");
+            const container = document.getElementById("caseContainer");
             if (container && event.target === container) closeCase();
         };
     
@@ -206,7 +206,7 @@ const OpenCase = (props) => {
     return (
             caseComponent ? 
             (
-                <div id='container' className={`${styles.openCaseContainer} ${styles.fadeIn}`}>
+                <div id='caseContainer' className={`${styles.openCaseContainer} ${styles.fadeIn}`}>
                     <div className={styles.openCase}>
                         <h1 className={styles.info}>You are about to open a <br /><span className={styles.rarity}>{props.name}</span>.</h1>
                         <h1 className={styles.info}>Would you like to procede?</h1>
@@ -226,7 +226,7 @@ const OpenCase = (props) => {
             :
 
             (
-                <div id='container' className={`${styles.itemReceivedContainer} ${styles.fadeIn}`}>
+                <div id='caseContainer' className={`${styles.itemReceivedContainer} ${styles.fadeIn}`}>
                     <div className={styles.itemReceived}>
                         <div className={`${styles.itemImage} ${returnStyle(getCaseRarity(props.name))}`}>
                             {itemImage(itemType)}

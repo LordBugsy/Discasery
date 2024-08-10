@@ -7,6 +7,7 @@ import OpenCase from './OpenCase'
 const Inventory = () => {
     const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount, isCaseOpening, setOpenCaseState} = useContext(DataContext);
     const [caseName, setCaseName] = useState("");
+    const [currentItemObject, setItemObject] = useState({});
 
     useEffect(() => {
         setNotification(false);

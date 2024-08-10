@@ -11,6 +11,7 @@ export const DataProvider = ({ children }) => {
     const [isTradeSelected, setTradeSelectionState] = useState(false);
     const [currentTradeObject, setCurrentTradeObject] = useState({});
     const [isCaseOpening, setOpenCaseState] = useState(false);
+    const [isItemSelling, setItemSellState] = useState(false);
 
     const [inventory, updateInventory] = useState([
         {name: "Common Case", amount: 0}, 
@@ -66,7 +67,7 @@ export const DataProvider = ({ children }) => {
     return (
         <DataContext.Provider value={{ selectedComponent, setComponent, username, setUsername, creditAmount, setCreditAmount, notificationDisplay, setNotification, 
                 isCaseBought, setCaseBoughtInfo, inventory, updateInventory, isTradeSelected, setTradeSelectionState, tradeList, updateTradeList, 
-                currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory, isCaseOpening, setOpenCaseState }}>
+                currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory, isCaseOpening, setOpenCaseState, isItemSelling, setItemSellState }}>
             {children}
         </DataContext.Provider>
     );
