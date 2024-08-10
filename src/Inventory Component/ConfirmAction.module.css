@@ -32,7 +32,12 @@
     animation: fadeOut 0.5s ease-in-out both;
 }
 
-.openCaseContainer {
+.absolute {
+    position: absolute;
+    bottom: 10px;
+}
+
+.openCaseContainer, .itemReceivedContainer {
     opacity: 0;
     position: fixed;
     width: 100%;
@@ -49,7 +54,7 @@
     color: white;
 }
 
-.openCase {
+.openCase, .itemReceived {
     background-color: var(--confirmActionColour);
     height: 400px;
     width: 40em;
@@ -62,6 +67,11 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 12em;
+}
+
+.itemReceived {
+    height: auto;
+    padding: 25px 0;
 }
 
 .button {
@@ -94,7 +104,7 @@
     background-color: red;
 }
 
-.selectedCase {
+.selectedCase, .itemImage {
     border-radius: 10px;
     background-color: var(--iconBackgroundColour);
     font-size: 13em;
@@ -124,6 +134,48 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+}
+
+/* The item was received */
+
+.itemImage {
+    margin-bottom: 40px;
+}
+
+.common {
+    background-color: rgba(160, 160, 160, 0.247);
+}
+
+.uncommon {
+    background-color: rgba(54, 255, 47, 0.267);
+}
+
+.unusual {
+    background-color: rgb(35, 98, 158);
+}
+
+.rare {
+    background-color: rgb(255, 166, 0);
+}
+
+.epic {
+    background-color: blueviolet;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.legendary {
+    background-color: rgb(218, 38, 38);
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.mythical {
+    background-color: indianred;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.godly {
+    background-color: white;
+    text-shadow: 0 0 15px rgb(0, 0, 0);
 }
 
 @media only screen and (max-width: 640px) {
