@@ -7,12 +7,14 @@ import TradeRequest from './TradeRequest';
 import ConfirmTrade from './ConfirmTrade';
 
 const Trades = () => {
-    const {setNotification, isTradeSelected, setTradeSelectionState} = useContext(DataContext);
+    const {setNotification, isTradeSelected, setTradeSelectionState, setOpenCaseState, setItemSellState} = useContext(DataContext);
     const [searchTab, setTradeTab] = useState(true);
 
     useEffect(() => {
         setNotification(false);
         setTradeSelectionState(false);
+        setOpenCaseState(false);
+        setItemSellState(false);
     }, []);
 
     return (

@@ -3,19 +3,22 @@ import styles from './ConfirmAction.module.css'
 import { DataContext } from '../DataProvider';
 const ConfirmSale = (item) => {
 
-    const {setItemSellState, setCreditAmount} = useContext(DataContext)
+    const {setItemSellState, setCreditAmount, itemInventory} = useContext(DataContext)
 
     const sellItem = (element) => {
+        console.log(element);
         if (element.amount > 0) {
-            element.amount--;
+            const selectedItem = itemInventory.find(i => i.name === item.name);
+            selectedItem.amount--;
             setCreditAmount(c => c + element.value);
+            closeContainer();
         }
     }
 
     const closeContainer = () => {
         const container = document.getElementById("sellContainer");
-        container.classList.add(fadeOut);
-        container.classList.remove(fadeOut);
+        container.classList.add(styles.fadeOut);
+        container.classList.remove(styles.fadeIn);
 
         setTimeout(() => {
             setItemSellState(false);
@@ -36,7 +39,11 @@ const ConfirmSale = (item) => {
         <div id='sellContainer' className={`${styles.confirmSaleContainer} ${styles.fadeIn}`}>
             <div className={styles.confirmSale}>
                 <h1 className={styles.info}>Do you really want to sell a {item.name} for {item.value} credits?</h1>
-                <button className={`${styles.button} ${styles.open}`}>Sell</button>
+                <div className={styles.controls}>
+                    <button onClick={() => sellItem(item)} className={`${styles.button} ${styles.open}`}>Sell</button>
+                    <button onClick={closeContainer} className={`${styles.button} ${styles.close}`}>Cancel</button>
+                </div>
+                
             </div>
         </div>
     )

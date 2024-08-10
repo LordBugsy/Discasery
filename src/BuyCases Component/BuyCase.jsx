@@ -5,9 +5,7 @@ import { DataContext } from '../DataProvider';
 import ConfirmBuy from './ConfirmBuy';
 
 const BuyCase = () => {
-    //for some reason, even tho we don't use creditAmount, if I don't import it in this file, it crashes...
-    const {creditAmount, setCreditAmount} = useContext(DataContext);
-    const {notificationDisplay, setNotification, setTradeSelectionState} = useContext(DataContext);
+    const {notificationDisplay, setNotification, setTradeSelectionState, setOpenCaseState, setItemSellState} = useContext(DataContext);
     const {setCaseBoughtInfo} = useContext(DataContext);
 
     const [caseNameProp, setCaseNameProp] = useState("");
@@ -16,6 +14,8 @@ const BuyCase = () => {
     useEffect(() => {
         setNotification(false);
         setTradeSelectionState(false);
+        setOpenCaseState(false);
+        setItemSellState(false);
     }, []);
 
     const buyCase = (rarity) => {

@@ -6,10 +6,11 @@ export const DataProvider = ({ children }) => {
     const [selectedComponent, setComponent] = useState("BuyCases");
     const [username, setUsername] = useState("");
     const [creditAmount, setCreditAmount] = useState(100);
+    const [currentTradeObject, setCurrentTradeObject] = useState({});
+
     const [notificationDisplay, setNotification] = useState(false);
     const [isCaseBought, setCaseBoughtInfo] = useState(false);
     const [isTradeSelected, setTradeSelectionState] = useState(false);
-    const [currentTradeObject, setCurrentTradeObject] = useState({});
     const [isCaseOpening, setOpenCaseState] = useState(false);
     const [isItemSelling, setItemSellState] = useState(false);
 

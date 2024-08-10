@@ -3,15 +3,18 @@ import styles from './Inventory.module.css'
 import credits from '../assets/credits.png'
 import { DataContext } from '../DataProvider'
 import OpenCase from './OpenCase'
+import ConfirmSale from './ConfirmSale'
 
 const Inventory = () => {
-    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount, isCaseOpening, setOpenCaseState} = useContext(DataContext);
+    const {inventory, itemInventory, setNotification, setComponent, setTradeSelectionState, setCreditAmount, isCaseOpening, setOpenCaseState, isItemSelling, setItemSellState} = useContext(DataContext);
     const [caseName, setCaseName] = useState("");
     const [currentItemObject, setItemObject] = useState({});
 
     useEffect(() => {
         setNotification(false);
         setTradeSelectionState(false);
+        setOpenCaseState(false);
+        setItemSellState(false);
     }, []);
 
     //background of the image
@@ -118,10 +121,12 @@ const Inventory = () => {
     }
 
     const sellItem = (element) => {
-        if (element.amount > 0) {
-            element.amount--;
-            setCreditAmount(c => c + element.value);
-        }
+        setItemObject(element);
+        setItemSellState(true);
+        // if (element.amount > 0) {
+        //     element.amount--;
+        //     setCreditAmount(c => c + element.value);
+        // }
     }
 
     const openCase = (element) => {
@@ -204,6 +209,7 @@ const Inventory = () => {
             </div>
 
             {isCaseOpening && <OpenCase name={caseName} />}
+            {isItemSelling && <ConfirmSale name={currentItemObject.name} value={currentItemObject.value} amount={currentItemObject.amount} />}
 
             <div className='copyright'>
                 <h2>*STILL IN DEVELOPMENT*</h2>

@@ -140,7 +140,7 @@ const OpenCase = (props) => {
     }
 
     const closeCase = () => {
-        const container = document.getElementById("container");
+        const container = document.getElementById("caseContainer");
         container.classList.remove(styles.fadeIn);
         container.classList.add(styles.fadeOut);
 
