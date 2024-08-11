@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import credits from '../assets/credits.png'
 import { DataContext } from '../DataProvider';
 import ConfirmBuy from './ConfirmBuy';
+import PolicyPrivacy from '../Legal and Compliance/PolicyPrivacy';
 
 const BuyCase = () => {
     const {notificationDisplay, setNotification, setTradeSelectionState, setOpenCaseState, setItemSellState} = useContext(DataContext);

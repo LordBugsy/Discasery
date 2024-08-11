@@ -28,8 +28,8 @@ const Signup = () => {
         const value = inputUsername;
 
         if (regex.test(value)) {
-            if (value.length < 4 || value.length > 12) {
-                setError.textContent = "Your username must contain between 4 and 12 characters.";
+            if (value.length < 4 || value.length > 20) {
+                setError.textContent = "Your username must contain between 4 and 20 characters.";
             } 
             
             else {

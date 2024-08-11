@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
 
+:root {
+    --mainDiscaseryColour: rgb(26, 29, 48);
+}
+
 * {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -40,4 +44,22 @@ html {
 
 .copyright h2 {
     color: rgba(255, 255, 255, 0.336);
+}
+
+.legalComplianceContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    font-weight: bold;
+    margin-top: 100%;
+    position: absolute;
+    bottom: 0;
+    user-select: none;
+}
+
+.legalCompliance {
+    cursor: pointer;
 }
