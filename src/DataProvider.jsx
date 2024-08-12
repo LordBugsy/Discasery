@@ -13,6 +13,7 @@ export const DataProvider = ({ children }) => {
     const [isTradeSelected, setTradeSelectionState] = useState(false);
     const [isCaseOpening, setOpenCaseState] = useState(false);
     const [isItemSelling, setItemSellState] = useState(false);
+    const [errorMessage, updateErrorMessage] = useState("");
 
     const [isTosOpen, setTosState] = useState(false);
     const [isPolicyOpen, setPolicyState] = useState(false);
@@ -35,6 +36,7 @@ export const DataProvider = ({ children }) => {
        {name: "Common Shield", type: "shield", rarity: "common", amount: 0, value: 30},
        {name: "Uncommon Shield", type: "shield", rarity: "uncommon", amount: 0, value: 70},
        {name: "Unusual Shield", type: "shield", rarity: "unusual", amount: 0, value: 120},
+       {name: "Rare Shield", type: "shield", rarity: "rare", amount: 0, value: 240},
 
        {name: "Common Feather", type: "feather", rarity: "common", amount: 0, value: 15},
        {name: "Uncommon Feather", type: "feather", rarity: "uncommon", amount: 0, value: 35},
@@ -72,7 +74,7 @@ export const DataProvider = ({ children }) => {
         <DataContext.Provider value={{ selectedComponent, setComponent, username, setUsername, creditAmount, setCreditAmount, notificationDisplay, setNotification, 
                 isCaseBought, setCaseBoughtInfo, inventory, updateInventory, isTradeSelected, setTradeSelectionState, tradeList, updateTradeList, 
                 currentTradeObject, setCurrentTradeObject, itemInventory, updateItemInventory, isCaseOpening, setOpenCaseState, isItemSelling, setItemSellState,
-                isTosOpen, setTosState, isPolicyOpen, setPolicyState }}>
+                isTosOpen, setTosState, isPolicyOpen, setPolicyState, errorMessage, updateErrorMessage }}>
             {children}
         </DataContext.Provider>
     );

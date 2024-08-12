@@ -4,7 +4,7 @@ import { DataContext } from '../DataProvider';
 import { useContext, useEffect, useState } from 'react';
 
 const ConfirmTrade = () => {
-    const {setTradeSelectionState, currentTradeObject} = useContext(DataContext);
+    const {setTradeSelectionState, currentTradeObject, creditAmount, setCreditAmount, inventory, tradeList, updateTradeList, itemInventory, errorMessage, updateErrorMessage} = useContext(DataContext);
 
     const [isInteractivityAllowed, setInteractivityState] = useState(false);
 
@@ -80,13 +80,120 @@ const ConfirmTrade = () => {
         }
     }
 
-    const acceptTrade = () => {
-        //for now, we'll make it so that just closes the "ConfirmTrade" component
-        closeTradeDetails();
+    const acceptTrade = (tradeObject) => {
+        updateErrorMessage("");
+
+        switch(tradeObject.requestedItemType) {
+            case 'credits':
+                const requestedAmount = parseInt(tradeObject.requestedItemName);
+                if (requestedAmount > creditAmount) updateErrorMessage("You do not have enough credits to accept this trade.");
+
+                else {
+                    setCreditAmount(currentCredit => currentCredit - requestedAmount);
+
+                    if (tradeObject.authorItemType === "case") {
+                        //if the object is a case..
+                        const itemToReceive = inventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+                    
+                    else if (['fish', 'shield', 'feather', 'umbrella', 'crow', 'dove', 'hippo', 'dragon'].includes(tradeObject.authorItemType)) {
+                        //if the object is an item..
+                        const itemToReceive = itemInventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+
+                    else if (tradeObject.authorItemType === "credits") {
+                        //if the object is credit..
+                        const itemToReceive = parseInt(tradeObject.authorItemName);
+                        setCreditAmount(currentCredit => currentCredit + itemToReceive);
+                    }
+
+                    const newTradeList = tradeList.filter((element) => element.tradeId !== tradeObject.tradeId);
+                    updateTradeList(newTradeList);
+                }
+
+                closeTradeDetails();
+                break;
+
+            case 'case':
+                const requestedCase = inventory.find(item => item.name === tradeObject.requestedItemName);
+                if (requestedCase.amount < 1) updateErrorMessage(`You do not have a ${tradeObject.requestedItemName} in your inventory.`);
+
+                else {
+                    requestedCase.amount--;
+
+                    if (tradeObject.authorItemType === "case") {
+                        //if the object is a case..
+                        const itemToReceive = inventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+                    
+                    else if (['fish', 'shield', 'feather', 'umbrella', 'crow', 'dove', 'hippo', 'dragon'].includes(tradeObject.authorItemType)) {
+                        //if the object is an item..
+                        const itemToReceive = itemInventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+
+                    else if (tradeObject.authorItemType === "credits") {
+                        //if the object is credit..
+                        const itemToReceive = parseInt(tradeObject.authorItemName);
+                        setCreditAmount(currentCredit => currentCredit + itemToReceive);
+                    }
+
+                    const newTradeList = tradeList.filter((element) => element.tradeId !== tradeObject.tradeId);
+                    updateTradeList(newTradeList);
+                }
+
+                closeTradeDetails();
+                break;
+
+
+            //i wish I didn't make this the "itemType" for the items...
+            case 'fish':
+            case 'shield':
+            case 'feather':
+            case 'umbrella':
+            case 'crow':
+            case 'dove':
+            case 'hippo':
+            case 'dragon':
+                const requestedItem = itemInventory.find((item) => item.name === tradeObject.requestedItemName);
+                if (requestedItem.amount < 1) updateErrorMessage(`You do not have a ${tradeObject.requestedItemName} in your inventory.`);
+
+                else {
+                    requestedItem.amount--;
+
+                    if (tradeObject.authorItemType === "case") {
+                        //if the object is a case..
+                        const itemToReceive = inventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+                    
+                    else if (['fish', 'shield', 'feather', 'umbrella', 'crow', 'dove', 'hippo', 'dragon'].includes(tradeObject.authorItemType)) {
+                        //if the object is an item..
+                        const itemToReceive = itemInventory.find(item => item.name === tradeObject.authorItemName);
+                        itemToReceive.amount++;
+                    }
+
+                    else if (tradeObject.authorItemType === "credits") {
+                        //if the object is credit..
+                        const itemToReceive = parseInt(tradeObject.authorItemName);
+                        setCreditAmount(currentCredit => currentCredit + itemToReceive);
+                    }
+
+                    const newTradeList = tradeList.filter((element) => element.tradeId !== tradeObject.tradeId);
+                    updateTradeList(newTradeList);
+                }
+                closeTradeDetails();
+                break;
+            
+            default:
+                closeTradeDetails();
+        }
     }
 
     const declineTrade = () => {
-        //for now, we'll make it so that just closes the "ConfirmTrade" component
         closeTradeDetails();
     }
 
@@ -111,7 +218,7 @@ const ConfirmTrade = () => {
                 </div>
                 
                 <div className={styles.controls}>
-                    <button disabled={!isInteractivityAllowed} onClick={acceptTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.acceptTrade : styles.disabled}`}>Accept</button>
+                    <button disabled={!isInteractivityAllowed} onClick={() => acceptTrade(currentTradeObject)} className={`${styles.button} ${isInteractivityAllowed ? styles.acceptTrade : styles.disabled}`}>Accept</button>
                     <button disabled={!isInteractivityAllowed} onClick={declineTrade} className={`${styles.button} ${isInteractivityAllowed ? styles.declineTrade : styles.disabled}`}>Decline</button>
                 </div>
             </div>
