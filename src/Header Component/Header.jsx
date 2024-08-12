@@ -46,17 +46,18 @@ const Header = () => {
             <ul id='header' className={styles.header}>
                 <div className={styles.headerLeft}>
                     <li className={styles.logo}>Discasery</li>
-                    <div className={`${styles.credits} ${styles.responsive} ${styles.whatDoInameThis}`}>
+                    <div onClick={() => handleNavClick('Shop')} className={`${styles.credits} ${styles.responsive} ${styles.whatDoInameThis}`}>
                         <img className={styles.img} src={creditsImage} alt='credits' />
                         <h3 className={styles.creditAmount}>{creditAmount}</h3>
                     </div>
+
                     <li className={`${styles.navLinks} ${styles.responsive}`} onClick={() => handleNavClick('Inventory')}>Inventory</li>
                     <li className={`${styles.navLinks} ${styles.responsive}`} onClick={() => handleNavClick('BuyCases')}>Buy Cases</li>
                     <li className={`${styles.navLinks} ${styles.responsive}`} onClick={() => handleNavClick('Trades')}>Trades</li>
                 </div>
                 <div className={styles.headerRight}>
                     <li className={`${styles.username}`}>{username}</li>
-                    <div className={`${styles.credits} ${styles.responsive}`}>
+                    <div onClick={() => handleNavClick('Shop')} className={`${styles.credits} ${styles.responsive}`}>
                         <img className={styles.img} src={creditsImage} alt='credits' />
                         <h3 className={styles.creditAmount}>{creditAmount}</h3>
                     </div>
@@ -71,6 +72,8 @@ const Header = () => {
                     <li className={styles.hidden} onClick={() => handleNavClick('BuyCases')}>Buy Cases</li>
                     <hr className={styles.hr} />
                     <li className={styles.hidden} onClick={() => handleNavClick('Trades')}>Trades</li>
+                    <hr className={styles.hr} />
+                    <li className={styles.hidden} onClick={() => handleNavClick('Shop')}>Shop</li>
                     <hr className={styles.hr} />
                 </ul>
             </div>

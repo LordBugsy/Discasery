@@ -1,6 +1,6 @@
 import styles from './TradeSearch.module.css'
 import Loading from '../Loading Component/Loading';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const TradeSearch = () => {
     const [searchResult, setSearchResult] = useState("");
@@ -14,6 +14,16 @@ const TradeSearch = () => {
         if (inputValue.length > 0) setButtonState(false);
         else setButtonState(true);
     }
+
+    useEffect(() => {
+        const enterKeyPressed = (event) => {
+            if (event.key === "Enter") browsePlayers();
+        }
+
+        document.addEventListener("keydown", enterKeyPressed);
+
+        return () => document.removeEventListener("keydown", enterKeyPressed);
+    }, [searchResult]);
 
     const browsePlayers = () => {
         if (userResult === "" && !isButtonDisabled) {
@@ -30,7 +40,7 @@ const TradeSearch = () => {
         <div id='tradeSearch' className={`${styles.tradeSearchTab} ${styles.fadeIn}`}>
             <div className={styles.searchTab}>
                 <div className={styles.searchInput}>
-                    <input id='input' type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={searchPlayer} maxLength="12" />
+                    <input spellCheck="false" id='input' type='text' placeholder='Search a username..' className={styles.input} value={searchResult} onChange={searchPlayer} maxLength="12" />
                     <button onClick={browsePlayers} disabled={isButtonDisabled} className={`${styles.responsive} ${styles.button} ${isButtonDisabled ? styles.disable : styles.searchPlayer}`}><i className="ri-search-2-line"></i></button>
                 </div>
 

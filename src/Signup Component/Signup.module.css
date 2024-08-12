@@ -117,7 +117,6 @@
 
 .active:hover {
     background-color: rgb(25, 173, 25);
-    transform: scale(1.2);
 }
 
 .error {
@@ -127,6 +126,11 @@
 .fadeOut {
     animation: fadeOut 0.8s ease-in-out both;
     cursor: default;
+}
+
+.interact {
+    color: rgb(0, 255, 0);
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 610px) {

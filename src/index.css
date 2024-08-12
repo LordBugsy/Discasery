@@ -54,10 +54,8 @@ html {
     gap: 30px;
     color: white;
     font-weight: bold;
-    margin-top: 100%;
-    position: absolute;
-    bottom: 0;
     user-select: none;
+    text-align: center;
 }
 
 .legalCompliance {

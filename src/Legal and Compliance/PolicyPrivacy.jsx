@@ -3,12 +3,7 @@ import styles from './LegalCompliance.module.css'
 import { DataContext } from '../DataProvider';
 
 const PolicyPrivacy = () => {
-    const {setComponent, username, setTosState} = useContext(DataContext);
-
-    useEffect(() => {
-        document.title = "Privacy Policy";
-        setTosState(false);
-    }, []);
+    const {setPolicyState} = useContext(DataContext);
 
     const closeTos = () => {
         const policyContainer = document.getElementById("policyContainer");
@@ -19,6 +14,18 @@ const PolicyPrivacy = () => {
             setPolicyState(false);
         }, 300);
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const policyContainer = document.getElementById("policyContainer");
+            if (policyContainer && event.target === policyContainer) closeTos();
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+        
+    }, []);
 
     return (
         <div id='policyContainer' className={`${styles.policyContainer} ${styles.fadeIn}`}>

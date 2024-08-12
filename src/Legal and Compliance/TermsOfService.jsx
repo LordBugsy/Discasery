@@ -3,12 +3,7 @@ import styles from './LegalCompliance.module.css'
 import { DataContext } from '../DataProvider';
 
 const TermsOfService = () => {
-    const {setComponent, username, setPolicyState, setTosState} = useContext(DataContext);
-
-    useEffect(() => {
-        document.title = "Terms of Service";
-        setPolicyState(false);
-    }, []);
+    const {setTosState} = useContext(DataContext);
 
     const closeTos = () => {
         const tosContainer = document.getElementById("tosContainer");
@@ -19,6 +14,16 @@ const TermsOfService = () => {
             setTosState(false);
         }, 300);
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const tosContainer = document.getElementById("tosContainer");
+            if (tosContainer && event.target === tosContainer) closeTos();
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <>

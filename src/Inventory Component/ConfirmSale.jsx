@@ -6,7 +6,6 @@ const ConfirmSale = (item) => {
     const {setItemSellState, setCreditAmount, itemInventory} = useContext(DataContext)
 
     const sellItem = (element) => {
-        console.log(element);
         if (element.amount > 0) {
             const selectedItem = itemInventory.find(i => i.name === item.name);
             selectedItem.amount--;
