@@ -33,4 +33,4 @@ To run this project locally, follow these steps:
     ```
 
 ## License
-This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. See the [LICENSE](./LICENCE.txt) file for details.
