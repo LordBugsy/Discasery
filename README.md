@@ -1,5 +1,7 @@
 # Discasery
 
+![Discasery](https://i.gyazo.com/e43d3a395b654e535e85568a13ba73b8.png)
+
 ## Description
 [Discasery](https://discasery.fun) is an online video game where players can open, buy, and trade cases with credits. In those cases, items from different rarity can be obtained, each with a different value.
 
